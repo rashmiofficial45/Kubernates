@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-stack-pod  # Updated name to reflect the whole stack
+spec:
+  containers:
+  # 1. The PostgreSQL Database
+  - name: postgres
+    image: postgres:16
+    env:
+      - name: POSTGRES_USER
+        value: "postgres"
+      - name: POSTGRES_PASSWORD
+        value: "secret123"
+    ports:
+    - containerPort: 5432
+
+  # 2. The Redis Cache
+  - name: redis
+    image: redis:latest
+    ports:
+    - containerPort: 6379
+
+  # 3. The Nginx Web Server
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
