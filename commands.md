@@ -1,5 +1,4 @@
 # ☸️ Kubernetes — Command by Command
-### Minimal · Precise · Notion Friendly
 
 ---
 
