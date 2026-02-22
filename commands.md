@@ -1,7 +1,5 @@
 # ☸️ Kubernetes — Command by Command
 
----
-
 ## 1. Create a Cluster
 
 ### With a config file
