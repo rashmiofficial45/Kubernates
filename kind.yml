@@ -1,0 +1,23 @@
+# kind.yml — updated
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30007   # NodePort on this node
+        hostPort: 30007        # localhost:30007 on your Mac → this node
+        protocol: TCP
+
+  - role: worker
+    extraPortMappings:
+      - containerPort: 30007   # same NodePort — kube-proxy opens it here too
+        hostPort: 30008        # localhost:30008 on your Mac → this worker
+        protocol: TCP
+        # ↑ hostPort must be different from control-plane's 30007
+        #   because two Docker containers can't both use the same Mac port
+
+  - role: worker
+    extraPortMappings:
+      - containerPort: 30007   # same NodePort again
+        hostPort: 30009        # localhost:30009 on your Mac → this worker
+        protocol: TCP
